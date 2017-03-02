@@ -1,10 +1,13 @@
 ﻿{
   "version": "1.0.0-*",
-
+  "title": "PV.Redis.Services",
   "dependencies": {
-    "NETStandard.Library": "1.6.0"
+    "Microsoft.Extensions.Logging.Abstractions": "1.1.0",
+    "NETStandard.Library": "1.6.1",
+    "Newtonsoft.Json": "9.0.1",
+    "NLog.Web.AspNetCore": "4.3.1",
+    "StackExchange.Redis": "1.2.1"
   },
-
   "frameworks": {
     "netstandard1.6": {
       "imports": "dnxcore50"
