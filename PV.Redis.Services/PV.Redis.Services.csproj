@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <AssemblyTitle>PV.Redis.Services</AssemblyTitle>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard1.5</TargetFramework>
     <AssemblyName>PV.Redis.Services</AssemblyName>
     <PackageId>pv-redis-services</PackageId>
     <Authors>Johnny Anderson dos Santos &lt;johnny.santos@pagueveloz.com.br&gt;</Authors>
@@ -14,16 +14,16 @@
     <PackageTags>pv, redis, serviços, service</PackageTags>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.6\PV.Redis.Services.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard1.6\PV.Redis.Services.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
