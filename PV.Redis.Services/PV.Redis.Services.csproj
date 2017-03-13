@@ -5,7 +5,7 @@
     <TargetFramework>netstandard1.5</TargetFramework>
     <AssemblyName>PV.Redis.Services</AssemblyName>
     <PackageId>pv-redis-services</PackageId>
-    <Authors>Johnny Anderson dos Santos &lt;johnny.santos@pagueveloz.com.br&gt;</Authors>
+    <Authors>Johnny Anderson dos Santos &lt;johnny.santos@pagueveloz.com.br&gt;, Jean Lourenço &lt;jean.lourenco@pagueveloz.com.br&gt;</Authors>
     <Company>PagueVeloz</Company>
     <Product>PV Redis Services</Product>
     <Copyright>PagueVeloz</Copyright>
@@ -14,8 +14,8 @@
     <PackageTags>pv, redis, serviços, service</PackageTags>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
