@@ -4,17 +4,18 @@ using PV.Redis.Services.Enums;
 using PV.Redis.Services.Interfaces;
 using PV.Redis.Services.Models;
 using StackExchange.Redis;
+using Microsoft.Extensions.Logging;
 
 namespace PV.Redis.Services
 {
     internal class RedisCacheProvider : ICacheProvider
     {
         private readonly IPVRedisSettings _settings;
-        private readonly ILog _logger;
+        private readonly ILogger _logger;
         private static ConnectionMultiplexer _redis;
 
         public RedisCacheProvider(
-            ILog logger
+            ILogger logger
             , IPVRedisSettings settings
         )
         {
@@ -46,7 +47,7 @@ namespace PV.Redis.Services
             }
             catch (Exception ex)
             {
-                _logger.Error($"{nameof(DefaultCacheInstance)}: Erro ao conectar a instância do Redis", ex);
+                _logger.LogError($"{nameof(DefaultCacheInstance)}: Erro ao conectar a instância do Redis.{Environment.NewLine}{ex}");
                 CacheStatus.Information.CacheServerIsUp = false;
                 throw;
             }
@@ -75,12 +76,12 @@ namespace PV.Redis.Services
 
         private When ToWhen(CacheEnums.When when)
         {
-            return (When) when;
+            return (When)when;
         }
 
         private CommandFlags ToCommandFlags(CacheEnums.CommandFlags flags)
         {
-            return (CommandFlags) flags;
+            return (CommandFlags)flags;
         }
 
         private RedisEndPoint GetSlaveServerPort()

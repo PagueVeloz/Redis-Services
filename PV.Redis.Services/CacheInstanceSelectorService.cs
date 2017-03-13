@@ -1,5 +1,6 @@
 ﻿using System;
 using PV.Redis.Services.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace PV.Redis.Services
 {
@@ -9,21 +10,17 @@ namespace PV.Redis.Services
         private readonly IDummyCacheInstance _dummyCacheInstance;
         private readonly IDefaultCacheInstance _defaultCacheInstance;
         private readonly Action<Exception> _onFail;
-        private readonly ILog _logger;
+        private readonly ILogger _logger;
 
         public CacheInstanceSelectorService(
-            IDummyCacheInstance dummyCacheInstance
-            , IDefaultCacheInstance defaultCacheInstance
+             IDefaultCacheInstance defaultCacheInstance
             , Action<Exception> onFail
-            , ILog log
+            , ILogger log
         )
         {
-            if (onFail == null)
-                throw new ArgumentNullException(nameof(onFail));
-
-            _dummyCacheInstance = dummyCacheInstance;
+            _dummyCacheInstance = new DummyCacheInstance();
             _defaultCacheInstance = defaultCacheInstance;
-            _onFail = onFail;
+            _onFail = onFail ?? throw new ArgumentNullException(nameof(onFail));
             _logger = log;
         }
 
@@ -65,7 +62,7 @@ namespace PV.Redis.Services
                     }
                 }
 
-                _logger.Error("Servidor REDIS está fora do ar", ex);
+                _logger.LogError("Servidor REDIS está fora do ar.{0}Exception: {1}", Environment.NewLine, ex);
 
                 return _dummyCacheInstance;
             }

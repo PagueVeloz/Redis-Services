@@ -2,7 +2,6 @@
 using System.Reflection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using NLog.Fluent;
 using PV.Redis.Services.Enums;
 using PV.Redis.Services.Interfaces;
 using StackExchange.Redis;
@@ -74,12 +73,11 @@ namespace PV.Redis.Services
             {
                 var value = Get<T>(key);
 
-                if (value == null)
-                {
-                    value = fnGetDbValue();
+                if (value != null) return value;
 
-                    Set(key, value, expires, when, flags);
-                }
+                value = fnGetDbValue();
+
+                Set(key, value, expires, when, flags);
 
                 return value;
             }
@@ -128,15 +126,15 @@ namespace PV.Redis.Services
 
         private When ToWhen(CacheEnums.When when)
         {
-            return (When) when;
+            return (When)when;
         }
 
         private CommandFlags ToCommandFlags(CacheEnums.CommandFlags flags)
         {
-            return (CommandFlags) flags;
+            return (CommandFlags)flags;
         }
 
-        public virtual string GetQualifiedKey<T>(string key)
+        public string GetQualifiedKey<T>(string key)
         {
             var type = typeof(T);
             key = key.Replace(":", string.Empty);
@@ -149,7 +147,7 @@ namespace PV.Redis.Services
 
         private void HandleException(string errorNamespace, Exception ex)
         {
-            _logger.Error($"{nameof(DefaultCacheInstance)}.{errorNamespace}", ex);
+            _logger.LogError($"{nameof(DefaultCacheInstance)}.{errorNamespace}{Environment.NewLine}{ex}");
             CacheStatus.Information.CacheServerIsUp = false;
         }
     }
