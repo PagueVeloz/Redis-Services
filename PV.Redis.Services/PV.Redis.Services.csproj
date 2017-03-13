@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>PV.Redis.Services</AssemblyTitle>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyName>PV.Redis.Services</AssemblyName>
+    <PackageId>pv-redis-services</PackageId>
+    <Authors>Johnny Anderson dos Santos &lt;johnny.santos@pagueveloz.com.br&gt;</Authors>
+    <Company>PagueVeloz</Company>
+    <Product>PV Redis Services</Product>
+    <Copyright>PagueVeloz</Copyright>
+    <Description>Contém os serviços de acesso e utilização do Redis.</Description>
+    <RepositoryType></RepositoryType>
+    <PackageTags>pv, redis, serviços, service</PackageTags>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="1.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.3.1" />
+    <PackageReference Include="StackExchange.Redis" Version="1.2.1" />
+  </ItemGroup>
+
+</Project>
